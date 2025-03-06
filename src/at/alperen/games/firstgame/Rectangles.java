@@ -18,6 +18,9 @@ public class Rectangles extends BasicGame {
     private float circleSpeed = 0.4f;
     private boolean circleMovingDown = true;
 
+    private int direction = 1; // 1 right, 2 down, 3 left
+
+
     public Rectangles(String title) {
         super(title);
     }
@@ -36,6 +39,8 @@ public class Rectangles extends BasicGame {
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         float move = ovaleSpeed * delta;
         float circleMove = circleSpeed * delta;
+        float rectMove = 0.3f * delta;
+
 
         if (ovaleMovingRight) {
             ovaleX += move;
@@ -51,6 +56,20 @@ public class Rectangles extends BasicGame {
         } else {
             circleY -= move;
             if (circleY <= 100) circleMovingDown = true;
+        }
+
+        if (direction == 1) {
+            rectX += rectMove;
+            if (rectX >= 500) direction = 2;
+        } else if (direction == 2) {
+            rectY += rectMove;
+            if (rectY >= 400) direction = 3;
+        } else if (direction == 3) {
+            rectX -= rectMove;
+            if (rectX <= 200) direction = 4;
+        } else if (direction == 4) {
+            rectY -= rectMove;
+            if (rectY <= 200) direction = 1;
         }
     }
 
