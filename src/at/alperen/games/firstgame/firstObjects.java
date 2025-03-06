@@ -2,11 +2,8 @@ package at.alperen.games.firstgame;
 
 import org.newdawn.slick.*;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.tests.AnimationTest;
 
-import java.awt.*;
-
-public class Rectangles extends BasicGame {
+public class firstObjects extends BasicGame {
 
     private float rectX, rectY;
     private float ovaleX, ovaleY;
@@ -21,7 +18,7 @@ public class Rectangles extends BasicGame {
     private int direction = 1; // 1 right, 2 down, 3 left
 
 
-    public Rectangles(String title) {
+    public firstObjects(String title) {
         super(title);
     }
 
@@ -84,7 +81,7 @@ public class Rectangles extends BasicGame {
 
     public static void main(String[] argv) {
         try {
-            AppGameContainer container = new AppGameContainer(new Rectangles("Rectangles"));
+            AppGameContainer container = new AppGameContainer(new firstObjects("Rectangles"));
             container.setDisplayMode(800, 600, false);
             container.start();
         } catch (SlickException e) {
