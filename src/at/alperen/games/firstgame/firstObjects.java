@@ -18,6 +18,7 @@ public class firstObjects extends BasicGame {
     private int direction = 1; // 1 right, 2 down, 3 left
 
 
+
     public firstObjects(String title) {
         super(title);
     }
