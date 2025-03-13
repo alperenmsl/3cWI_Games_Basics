@@ -3,12 +3,11 @@ package at.alperen.games.objectsgame;
 import org.newdawn.slick.Graphics;
 
 public class Rectangle implements Actor {
-    private enum DIRECTION {RIGHT, LEFT, UP, DOWN}
 
     private float x;
     private float y;
     private float speed;
-    boolean moveRight = true;
+    private boolean moveRight;
 
 
     public Rectangle(int x, int y, float speed, boolean moveRight) {
