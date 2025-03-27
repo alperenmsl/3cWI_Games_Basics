@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class ObjectsGame extends BasicGame {
     private List<Actor> actors;
+    private Bmw bmw;
 
 
     public ObjectsGame(String title) {
@@ -19,13 +20,17 @@ public class ObjectsGame extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
         Random random = new Random();
+        Bmw bmw = new Bmw();
+        this.bmw = bmw;
 
-        for (int i = 0; i < 10; i++) {
+
+
+        /*for (int i = 0; i < 10; i++) {
             boolean moveRight = true; // Hier können wir vergeben, ob sie komplett nach rechts gehen sollen oder ob sie random welche nach links andere nach rechts gehen sollen.
                                     // Mit boolean moveRight = random.nextBoolean() wird bestimmt das alle Rechtecke zufällig nach Links andere nach Rechts kommen.
             Rectangle rectangle = new Rectangle(random.nextInt(600), random.nextInt(600), random.nextInt(20) + 5, moveRight);
             actors.add(rectangle);
-        }
+        }*/
 
         for (int i = 0; i < 10; i++) {
             Circle circle = new Circle();
@@ -36,16 +41,24 @@ public class ObjectsGame extends BasicGame {
             Ellipse ellipse = new Ellipse(random.nextInt(800), random.nextInt(600));
             this.actors.add(ellipse);
         }
-        Bmw bmw = new Bmw();
         this.actors.add(bmw);
 
 
     }
 
     @Override
+    public void keyPressed(int key, char c) {
+        if (key == Input.KEY_SPACE) {
+            System.out.println("shoot");
+            Cannonball cb = new Cannonball(this.bmw.getX(), this.bmw.getY());
+            this.actors.add(cb);
+        }
+    }
+
+    @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actors) {
-            actor.update(delta);
+            actor.update(gameContainer, delta);
         }
     }
 
