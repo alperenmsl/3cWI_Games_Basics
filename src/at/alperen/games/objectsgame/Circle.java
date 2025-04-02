@@ -6,8 +6,8 @@ import org.newdawn.slick.Graphics;
 
 import java.util.Random;
 
-public class Circle implements Actor{
-    private float x,y;
+public class Circle implements Actor {
+    private float x, y;
     private float radius;
     private float growing;
 

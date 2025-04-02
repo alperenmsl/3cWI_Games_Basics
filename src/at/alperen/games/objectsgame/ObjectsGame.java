@@ -23,8 +23,6 @@ public class ObjectsGame extends BasicGame {
         Bmw bmw = new Bmw();
         this.bmw = bmw;
 
-
-
         /*for (int i = 0; i < 10; i++) {
             boolean moveRight = true; // Hier können wir vergeben, ob sie komplett nach rechts gehen sollen oder ob sie random welche nach links andere nach rechts gehen sollen.
                                     // Mit boolean moveRight = random.nextBoolean() wird bestimmt das alle Rechtecke zufällig nach Links andere nach Rechts kommen.
