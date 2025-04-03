@@ -47,10 +47,16 @@ public class Circle implements Actor {
         boolean onTileX = Math.abs(x % FIELD_SIZE - FIELD_SIZE / 2) < 2;
         boolean onTileY = Math.abs(y % FIELD_SIZE - FIELD_SIZE / 2) < 2;
 
-        if (onTileX && onTileY && isValidMove(x + nextDirectionX * FIELD_SIZE, y + nextDirectionY * FIELD_SIZE)) {
-            directionX = nextDirectionX;
-            directionY = nextDirectionY;
+        if (onTileX && onTileY) {
+            if (isValidMove(x + nextDirectionX * FIELD_SIZE, y + nextDirectionY * FIELD_SIZE)) {
+                directionX = nextDirectionX;
+                directionY = nextDirectionY;
+            } else if (!isValidMove(x + directionX * FIELD_SIZE, y + directionY * FIELD_SIZE)) {
+                directionX = 0;
+                directionY = 0;
+            }
         }
+
 
         float newX = x + directionX * speed * delta;
         float newY = y + directionY * speed * delta;
