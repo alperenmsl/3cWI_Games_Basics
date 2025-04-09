@@ -58,6 +58,17 @@ public class Circle implements Actor {
         }
 
 
+        int gridX = (int)(x / FIELD_SIZE);
+        int gridY = (int)(y / FIELD_SIZE);
+
+        if (gridX >= 0 && gridX < field[0].length && gridY >= 0 && gridY < field.length) {
+            if (field[gridY][gridX] == 0) {
+                field[gridY][gridX] = 2;  // Punkt „aufgegessen“
+            }
+        }
+
+
+
         float newX = x + directionX * speed * delta;
         float newY = y + directionY * speed * delta;
 

@@ -38,6 +38,7 @@ public class ObjectsGame extends BasicGame {
                 {1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+
         };
 
         Circle circle = new Circle(field);
@@ -51,6 +52,9 @@ public class ObjectsGame extends BasicGame {
         }
     }
 
+
+
+
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         for (int i = 0; i < field.length; i++) {
@@ -58,7 +62,7 @@ public class ObjectsGame extends BasicGame {
                 if (field[i][j] == 1) {
                     graphics.setColor(Color.blue);
                     graphics.fillRect(j * FIELD_SIZE, i * FIELD_SIZE, FIELD_SIZE, FIELD_SIZE);
-                } else {
+                } else if (field[i][j] == 0) {
                     graphics.setColor(Color.white);
                     graphics.fillOval(j * FIELD_SIZE + FIELD_SIZE / 2.0f - 2, i * FIELD_SIZE + FIELD_SIZE / 2.0f - 2, 4, 4);
                 }
