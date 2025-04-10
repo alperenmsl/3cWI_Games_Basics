@@ -58,12 +58,15 @@ public class Circle implements Actor {
         }
 
 
-        int gridX = (int)(x / FIELD_SIZE);
-        int gridY = (int)(y / FIELD_SIZE);
+        int gridX = (int) (x / FIELD_SIZE);
+        int gridY = (int) (y / FIELD_SIZE);
 
         if (gridX >= 0 && gridX < field[0].length && gridY >= 0 && gridY < field.length) {
             if (field[gridY][gridX] == 0) {
                 field[gridY][gridX] = 2;
+                collectedDots = true;
+            } else {
+                collectedDots = false;
             }
         }
 
@@ -76,8 +79,14 @@ public class Circle implements Actor {
             x = newX;
             y = newY;
         }
+        
     }
 
+    private boolean collectedDots = false;
+
+    public boolean collectedDotsFunction() {
+        return collectedDots;
+    }
 
     private boolean isValidMove(float newX, float newY) {
         int gridX = (int) ((newX + (directionX == -1 ? -radius : radius)) / FIELD_SIZE);

@@ -21,7 +21,16 @@ public class ScreenOne extends BasicGameState {
 
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException {
-        graphics.drawRect(100,100,100,100);
+        graphics.drawRect(50,50,100,100);
+        graphics.drawRect(170,50,100,100);
+        graphics.drawRect(290,50,100,100);
+        graphics.drawRect(410,50,100,100);
+
+        graphics.drawString("Level 1",70,70);
+        graphics.drawString("Level 2",190,70);
+        graphics.drawString("Level 3",310,70);
+        graphics.drawString("Level 4",430,70);
+
     }
     @Override
     public void update(GameContainer gameContainer, StateBasedGame stateBasedGame, int i) throws SlickException {

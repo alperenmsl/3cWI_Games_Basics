@@ -10,6 +10,7 @@ public class ObjectsGame extends BasicGame {
 
     private List<Actor> actors;
     private int[][] field;
+    private int score = 0;
 
     public ObjectsGame(String title) {
         super(title);
@@ -49,6 +50,11 @@ public class ObjectsGame extends BasicGame {
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actors) {
             actor.update(gameContainer, delta);
+            if (actor instanceof Circle) {
+                if (((Circle) actor).collectedDotsFunction()) {
+                    score++;
+                }
+            }
         }
     }
 
@@ -69,6 +75,9 @@ public class ObjectsGame extends BasicGame {
         for (Actor actor : this.actors) {
             actor.render(graphics);
         }
+
+        graphics.setColor(Color.white);
+        graphics.drawString("Score: " + score, 10, 550);
     }
 
     public static void main(String[] args) {

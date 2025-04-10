@@ -25,7 +25,7 @@ public class StateGame extends StateBasedGame {
             app.setTargetFrameRate(30);
             app.setShowFPS(true);
             app.start();
-        } catch(SlickException e) {
+        } catch (SlickException e) {
             e.printStackTrace();
         }
     }
