@@ -53,8 +53,6 @@ public class ObjectsGame extends BasicGame {
     }
 
 
-
-
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
         for (int i = 0; i < field.length; i++) {

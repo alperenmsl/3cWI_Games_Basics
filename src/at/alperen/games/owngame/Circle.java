@@ -63,7 +63,7 @@ public class Circle implements Actor {
 
         if (gridX >= 0 && gridX < field[0].length && gridY >= 0 && gridY < field.length) {
             if (field[gridY][gridX] == 0) {
-                field[gridY][gridX] = 2;  // Punkt „aufgegessen“
+                field[gridY][gridX] = 2;
             }
         }
 
@@ -87,7 +87,7 @@ public class Circle implements Actor {
             return false;
         }
 
-        return field[gridY][gridX] == 0;
+        return field[gridY][gridX] != 1;
     }
 
     @Override
