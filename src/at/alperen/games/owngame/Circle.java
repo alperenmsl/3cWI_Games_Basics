@@ -11,7 +11,7 @@ public class Circle implements Actor {
     private int[][] field;
 
 
-    private float boostedSpeed = 0.2f;
+    private float boostedSpeed = 0.15f;
     private boolean isBoosted = false;
     private int boostDuration = 0;
 
