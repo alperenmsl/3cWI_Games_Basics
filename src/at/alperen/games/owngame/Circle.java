@@ -2,6 +2,7 @@ package at.alperen.games.owngame;
 
 import org.newdawn.slick.*;
 
+
 import static at.alperen.games.owngame.ObjectsGame.FIELD_SIZE;
 
 public class Circle implements Actor {
@@ -122,5 +123,13 @@ public class Circle implements Actor {
     public void render(Graphics graphics) throws SlickException {
         graphics.setColor(Color.yellow);
         graphics.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public float getY() {
+        return y;
     }
 }
