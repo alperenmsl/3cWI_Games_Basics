@@ -24,9 +24,6 @@ public class ObjectsGame extends BasicGame {
     public void init(GameContainer gameContainer) throws SlickException {
         this.actors = new ArrayList<>();
 
-        ghosts.add(new Ghost(100, 100, new Color(255, 255, 255)));
-        ghosts.add(new Ghost(200, 200, new Color(255, 255, 255)));
-        ghosts.add(new Ghost(300, 300, new Color(255, 255, 255)));
 
         field = new int[][]{
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
@@ -47,8 +44,11 @@ public class ObjectsGame extends BasicGame {
                 {1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1},
                 {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1},
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-
         };
+
+        ghosts.add(new Ghost(100, 100, new Color(52, 235, 180), field));
+        ghosts.add(new Ghost(200, 200, new Color(156, 52, 235), field));
+        ghosts.add(new Ghost(300, 300, new Color(217, 22, 22), field));
 
         Circle circle = new Circle(field);
         this.actors.add(circle);
