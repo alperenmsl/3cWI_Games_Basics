@@ -34,6 +34,8 @@ public class Ghost implements Actor {
         return field[nextY][nextX] != 1;
     }
 
+
+
     @Override
     public void render(Graphics graphics) throws SlickException {
         graphics.setColor(color);

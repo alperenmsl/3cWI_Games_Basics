@@ -4,6 +4,7 @@ import org.newdawn.slick.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.newdawn.slick.TrueTypeFont;
 
 public class ObjectsGame extends BasicGame {
     public static final int FIELD_SIZE = 30;
@@ -13,7 +14,9 @@ public class ObjectsGame extends BasicGame {
     private int[][] field;
     private int score = 0;
 
-    private Circle player;
+    private Player player;
+
+    private GameState gameState = GameState.RUNNING;
 
 
     public ObjectsGame(String title) {
@@ -50,10 +53,9 @@ public class ObjectsGame extends BasicGame {
         ghosts.add(new Ghost(200, 200, new Color(156, 52, 235), field));
         ghosts.add(new Ghost(300, 300, new Color(217, 22, 22), field));
 
-        Circle circle = new Circle(field);
-        this.actors.add(circle);
 
-        player = new Circle(field);
+
+        player = new Player(field);
         this.actors.add(player);
     }
 
@@ -63,13 +65,19 @@ public class ObjectsGame extends BasicGame {
         return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
+    public enum GameState {
+        RUNNING,
+        GAME_OVER
+    }
+
+
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
         for (Actor actor : this.actors) {
             actor.update(gameContainer, delta);
-            if (actor instanceof Circle) {
-                if (((Circle) actor).collectedDotsFunction()) {
+            if (actor instanceof Player) {
+                if (((Player) actor).collectedDotsFunction()) {
                     score++;
                 }
             }
@@ -80,9 +88,21 @@ public class ObjectsGame extends BasicGame {
 
             if (distance(ghost.getX(), ghost.getY(), player.getX(), player.getY()) < 15) {
                 System.out.println("💀 Du wurdest gefressen! Der Geist hat dich erwischt.");
+                gameState = GameState.GAME_OVER;
                 // Game Over noch einbauen
             }
+
+
         }
+
+        if (gameState == GameState.GAME_OVER) {
+            Input input = gameContainer.getInput();
+            if (input.isKeyPressed(Input.KEY_ESCAPE)) {
+                gameContainer.exit();
+            }
+            return;
+        }
+
     }
 
 
@@ -102,6 +122,16 @@ public class ObjectsGame extends BasicGame {
                 }
             }
         }
+
+        if (gameState == GameState.GAME_OVER) {
+            graphics.setColor(Color.red);
+            graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 50), true));
+            graphics.drawString("GAME OVER", 250, 250);
+            graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.PLAIN, 20), true));
+            graphics.drawString("Drücke ESC zum Beenden", 270, 320);
+            return; // Stoppe weiteres Zeichnen
+        }
+
         for (Actor actor : this.actors) {
             actor.render(graphics);
         }

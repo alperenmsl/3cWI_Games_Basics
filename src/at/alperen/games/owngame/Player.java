@@ -5,7 +5,7 @@ import org.newdawn.slick.*;
 
 import static at.alperen.games.owngame.ObjectsGame.FIELD_SIZE;
 
-public class Circle implements Actor {
+public class Player implements Actor {
     private float x, y;
     private float radius = 10;
     private float speed = 0.1f;
@@ -23,7 +23,7 @@ public class Circle implements Actor {
     private int nextDirectionY = 0;
 
 
-    public Circle(int[][] field) {
+    public Player(int[][] field) {
         this.field = field;
         this.x = FIELD_SIZE + FIELD_SIZE / 2.0f;
         this.y = FIELD_SIZE + FIELD_SIZE / 2.0f;
@@ -71,6 +71,7 @@ public class Circle implements Actor {
         }
 
         float currentSpeed = isBoosted ? boostedSpeed : speed;
+
 
         float newX = x + directionX * currentSpeed * delta;
         float newY = y + directionY * currentSpeed * delta;
