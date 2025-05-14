@@ -70,6 +70,18 @@ public class ObjectsGame extends BasicGame {
         GAME_OVER
     }
 
+    private boolean allDotsCollected() {
+        for (int[] row : field) {
+            for (int cell : row) {
+                if (cell == 0 || cell == 3) return false;
+            }
+        }
+        return true;
+    }
+
+
+
+
 
 
     @Override
@@ -81,6 +93,11 @@ public class ObjectsGame extends BasicGame {
                     score++;
                 }
             }
+        }
+
+        if (allDotsCollected()) {
+            gameState = GameState.GAME_OVER;
+            System.out.println("🎉 Du hast gewonnen!");
         }
 
         for (Ghost ghost : ghosts) {
