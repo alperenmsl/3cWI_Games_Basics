@@ -13,9 +13,7 @@ public class ObjectsGame extends BasicGame {
     private List<Ghost> ghosts = new ArrayList<>();
     private int[][] field;
     private int score = 0;
-
     private Player player;
-
     private GameState gameState = GameState.RUNNING;
 
 
@@ -53,8 +51,6 @@ public class ObjectsGame extends BasicGame {
         ghosts.add(new Ghost(200, 200, new Color(156, 52, 235), field));
         ghosts.add(new Ghost(300, 300, new Color(217, 22, 22), field));
 
-
-
         player = new Player(field);
         this.actors.add(player);
     }
@@ -67,7 +63,8 @@ public class ObjectsGame extends BasicGame {
 
     public enum GameState {
         RUNNING,
-        GAME_OVER
+        GAME_OVER,
+        GAME_WON
     }
 
     private boolean allDotsCollected() {
@@ -78,11 +75,6 @@ public class ObjectsGame extends BasicGame {
         }
         return true;
     }
-
-
-
-
-
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
@@ -96,7 +88,7 @@ public class ObjectsGame extends BasicGame {
         }
 
         if (allDotsCollected()) {
-            gameState = GameState.GAME_OVER;
+            gameState = GameState.GAME_WON;
             System.out.println("🎉 Du hast gewonnen!");
         }
 
@@ -112,16 +104,14 @@ public class ObjectsGame extends BasicGame {
 
         }
 
-        if (gameState == GameState.GAME_OVER) {
+        if (gameState == GameState.GAME_OVER || gameState == GameState.GAME_WON) {
             Input input = gameContainer.getInput();
             if (input.isKeyPressed(Input.KEY_ESCAPE)) {
                 gameContainer.exit();
             }
             return;
         }
-
     }
-
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
@@ -140,10 +130,19 @@ public class ObjectsGame extends BasicGame {
             }
         }
 
-        if (gameState == GameState.GAME_OVER) {
-            graphics.setColor(Color.red);
+        if (gameState == GameState.GAME_WON) {
+            graphics.setColor(new Color(50, 255, 50)); // Grün = nice vibes
             graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 50), true));
-            graphics.drawString("GAME OVER", 250, 250);
+            graphics.drawString("YOU WIN!", 270, 250);
+            graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.PLAIN, 20), true));
+            graphics.drawString("Drücke ESC zum Beenden", 270, 320);
+            return; // Stoppe weiteres Zeichnen
+        }
+
+        if (gameState == GameState.GAME_OVER) {
+            graphics.setColor(new Color(178, 34, 34));
+            graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 50), true));
+            graphics.drawString("YOU WIN!", 270, 250);
             graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.PLAIN, 20), true));
             graphics.drawString("Drücke ESC zum Beenden", 270, 320);
             return; // Stoppe weiteres Zeichnen
