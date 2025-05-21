@@ -7,7 +7,7 @@ import java.util.List;
 import org.newdawn.slick.TrueTypeFont;
 
 public class ObjectsGame extends BasicGame {
-    public static final int FIELD_SIZE = 30;
+    public static final int FIELD_SIZE = 31;
 
     private List<Actor> actors;
     private List<Ghost> ghosts = new ArrayList<>();
@@ -15,6 +15,7 @@ public class ObjectsGame extends BasicGame {
     private int score = 0;
     private Player player;
     private GameState gameState = GameState.RUNNING;
+
 
 
     public ObjectsGame(String title) {
@@ -75,6 +76,8 @@ public class ObjectsGame extends BasicGame {
         }
         return true;
     }
+
+
 
     @Override
     public void update(GameContainer gameContainer, int delta) throws SlickException {
@@ -142,11 +145,12 @@ public class ObjectsGame extends BasicGame {
         if (gameState == GameState.GAME_OVER) {
             graphics.setColor(new Color(178, 34, 34));
             graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 50), true));
-            graphics.drawString("YOU WIN!", 270, 250);
+            graphics.drawString("GAME OVER", 270, 250);
             graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.PLAIN, 20), true));
             graphics.drawString("Drücke ESC zum Beenden", 270, 320);
-            return; // Stoppe weiteres Zeichnen
+            return;
         }
+
 
         for (Actor actor : this.actors) {
             actor.render(graphics);
