@@ -18,6 +18,7 @@ public class ObjectsGame extends BasicGame {
 
 
 
+
     public ObjectsGame(String title) {
         super(title);
     }
@@ -134,7 +135,7 @@ public class ObjectsGame extends BasicGame {
         }
 
         if (gameState == GameState.GAME_WON) {
-            graphics.setColor(new Color(50, 255, 50)); // Grün = nice vibes
+            graphics.setColor(new Color(50, 255, 50));
             graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.BOLD, 50), true));
             graphics.drawString("YOU WIN!", 270, 250);
             graphics.setFont(new TrueTypeFont(new java.awt.Font("Verdana", java.awt.Font.PLAIN, 20), true));

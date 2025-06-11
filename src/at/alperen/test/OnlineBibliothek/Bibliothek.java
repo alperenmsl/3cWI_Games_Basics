@@ -10,11 +10,13 @@ public class Bibliothek {
     public void addMedia(Book l) {
 
         books.add(l);
+
     }
 
     public ArrayList<Book> getAllMedia() {
 
         return books;
+
     }
 
     public Book getMediaByID(int id) {
